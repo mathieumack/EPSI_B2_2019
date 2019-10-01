@@ -6,8 +6,8 @@ namespace Exercice_3_2
     {
         static void Main(string[] args)
         {
-            // Parcours de 1 à 100
-            for (int j = 1; j <= 100; j++)
+            // Parcours de 1 à 20
+            for (int j = 1; j <= 20; j++)
             {
                 // Parcours de 1 à j
                 for (int i = 1; i <= j; i++)
