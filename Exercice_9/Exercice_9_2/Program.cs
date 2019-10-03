@@ -1,14 +1,21 @@
 ﻿using System;
 
-namespace Exercice_9_1
+namespace Exercice_9_2
 {
     class Program
     {
         static void Main(string[] args)
         {
+            IActionComparateur[] comparateurs = new IActionComparateur[4];
+            comparateurs[0] = new FeuilleAction();
+            comparateurs[1] = new PierreAction();
+            comparateurs[2] = new CiseauxAction();
+            comparateurs[3] = new PuitAction();
+
             Console.WriteLine("Que veux-tu jouer ? (" + ((int)Action.Pierre) +
                                 " = pierre, " + ((int)Action.Feuille) +
                                 " = feuille, " + ((int)Action.Ciseaux) +
+                                " = ciseaux et " + ((int)Action.Puit) +
                                 " = puit)");
 
             Action actionUtilisateur = (Action)int.Parse(Console.ReadLine());
@@ -20,10 +27,15 @@ namespace Exercice_9_1
                 Console.WriteLine("Egalité");
             else
             {
-                bool gagne = (actionUtilisateur == Action.Pierre && actionOrdinateur == Action.Ciseaux) ||
-                                (actionUtilisateur == Action.Feuille && actionOrdinateur == Action.Pierre) ||
-                                (actionUtilisateur == Action.Ciseaux && actionOrdinateur == Action.Feuille);
-                if (gagne)
+                IActionComparateur comparateur = null;
+                for (int i = 0; i < comparateurs.Length; i++)
+                {
+                    if (comparateurs[i].ActionDefinition == actionOrdinateur)
+                        comparateur = comparateurs[i];
+                }
+
+                bool gagne = comparateur.Gagne(actionUtilisateur);
+                if(gagne)
                     Console.WriteLine("Tu as gagné");
                 else
                     Console.WriteLine("Tu as perdu");

@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Exercice_9_1
+namespace Exercice_9_2
 {
-    public class CiseauxAction : IActionComparateur
+    public class CiseauxAction : BaseAction, IActionComparateur
     {
-        public Action ActionDefinition { get; private set; }
-
         public CiseauxAction()
         {
             ActionDefinition = Action.Ciseaux;

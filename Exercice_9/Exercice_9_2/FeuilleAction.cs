@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Exercice_9_1
+namespace Exercice_9_2
 {
-    public class FeuilleAction : IActionComparateur
+    public class FeuilleAction : BaseAction, IActionComparateur
     {
-        public Action ActionDefinition { get; private set; }
-
         public FeuilleAction()
         {
             ActionDefinition = Action.Feuille;
@@ -15,7 +13,7 @@ namespace Exercice_9_1
 
         public bool Gagne(Action action)
         {
-            return action == Action.Pierre;
+            return action == Action.Pierre || action == Action.Puit;
         }
     }
 }
