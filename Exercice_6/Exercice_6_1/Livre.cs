@@ -15,5 +15,11 @@ namespace Exercice_6_1
             Titre = titre;
             AnneePublication = anneePublication;
         }
+
+        public void AfficherDetails()
+        {
+            Console.WriteLine("      titre : " +Titre);
+            Console.WriteLine("      année : " + AnneePublication);
+        }
     }
 }

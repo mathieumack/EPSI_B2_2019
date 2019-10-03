@@ -74,8 +74,7 @@ namespace Exercice_6_1
                 if (Livres[i] != null)
                 {
                     Console.WriteLine("Livre " + i);
-                    Console.WriteLine("      titre : " + Livres[i].Titre);
-                    Console.WriteLine("      année : " + Livres[i].AnneePublication);
+                    Livres[i].AfficherDetails();
                 }
             }
         }
