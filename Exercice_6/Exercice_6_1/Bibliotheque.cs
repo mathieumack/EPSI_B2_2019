@@ -6,11 +6,11 @@ namespace Exercice_6_1
 {
     public class Bibliotheque
     {
-        public Livre[] Livres { get; private set; }
+        public List<Livre> Livres { get; private set; }
 
         public Bibliotheque()
         {
-            Livres = new Livre[10];
+            Livres = new List<Livre>();
         }
 
         public void Start()
@@ -33,43 +33,25 @@ namespace Exercice_6_1
 
         private void AjouterLivre()
         {
-            int index = IndexLibre();
-            if (index == -1)
-                Console.WriteLine("Bibliothèque pleine");
-            else
-            {
-                Console.WriteLine("Quel est le titre ?");
-                string titre = Console.ReadLine();
-                Console.WriteLine("Quel est l'année de publication ?");
-                int annee = int.Parse(Console.ReadLine());
+            Console.WriteLine("Quel est le titre ?");
+            string titre = Console.ReadLine();
+            Console.WriteLine("Quel est l'année de publication ?");
+            int annee = int.Parse(Console.ReadLine());
 
-                Livre nouveauLivre = new Livre(titre, annee);
-                Livres[index] = nouveauLivre;
-            }
-        }
-
-        private int IndexLibre()
-        {
-            int i = 0;
-            while(i < Livres.Length && Livres[i] != null)
-            {
-                i++;
-            }
-            if (i < Livres.Length)
-                return i;
-            return -1;
+            Livre nouveauLivre = new Livre(titre, annee);
+            Livres.Add(nouveauLivre);
         }
 
         private void SupprimeLivre()
         {
             Console.WriteLine("Quel est le numéro du livre ?");
             int index = int.Parse(Console.ReadLine());
-            Livres[index] = null;
+            Livres.RemoveAt(index);
         }
 
         private void AfficherLivres()
         {
-            for(int i = 0; i < Livres.Length; i++)
+            for(int i = 0; i < Livres.Count; i++)
             {
                 if (Livres[i] != null)
                 {

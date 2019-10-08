@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Exercice_9_2
 {
@@ -6,12 +7,12 @@ namespace Exercice_9_2
     {
         static void Main(string[] args)
         {
-            IActionComparateur[] comparateurs = new IActionComparateur[4];
-            comparateurs[0] = new FeuilleAction();
-            comparateurs[1] = new PierreAction();
-            comparateurs[2] = new CiseauxAction();
-            comparateurs[3] = new PuitAction();
-
+            Dictionary<Action, IActionComparateur> comparateurs = new Dictionary<Action, IActionComparateur>();
+            comparateurs.Add(Action.Feuille, new FeuilleAction());
+            comparateurs.Add(Action.Pierre, new PierreAction());
+            comparateurs.Add(Action.Ciseaux, new CiseauxAction());
+            comparateurs.Add(Action.Puit, new PuitAction());
+            
             Console.WriteLine("Que veux-tu jouer ? (" + ((int)Action.Pierre) +
                                 " = pierre, " + ((int)Action.Feuille) +
                                 " = feuille, " + ((int)Action.Ciseaux) +
@@ -27,13 +28,7 @@ namespace Exercice_9_2
                 Console.WriteLine("Egalité");
             else
             {
-                IActionComparateur comparateur = null;
-                for (int i = 0; i < comparateurs.Length; i++)
-                {
-                    if (comparateurs[i].ActionDefinition == actionOrdinateur)
-                        comparateur = comparateurs[i];
-                }
-
+                IActionComparateur comparateur = comparateurs[actionOrdinateur];
                 bool gagne = comparateur.Gagne(actionUtilisateur);
                 if(gagne)
                     Console.WriteLine("Tu as gagné");
