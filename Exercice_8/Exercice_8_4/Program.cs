@@ -7,7 +7,6 @@ namespace Exercice_8_4
         static void Main(string[] args)
         {
             CalculatriceGenerique cal = new CalculatriceGenerique();
-
             cal.Start();
         }
     }

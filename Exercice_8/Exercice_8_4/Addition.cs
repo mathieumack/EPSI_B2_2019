@@ -4,13 +4,11 @@ using System.Text;
 
 namespace Exercice_8_4
 {
-    class CalculatriceDouble : ICalculatrice
+    class Addition : BaseOperation, IOperation
     {
-        public string Operation
+        public Addition()
         {
-            get {
-                return "+";
-            }
+            Operation = "+";
         }
 
         /// <summary>
@@ -19,7 +17,7 @@ namespace Exercice_8_4
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        private double Additionne(double a, double b)
+        private double Additionner(double a, double b)
         {
             return a + b;
         }
@@ -31,19 +29,8 @@ namespace Exercice_8_4
         {
             double valA = ReadValue("Saisissez  la première valeur :");
             double valB = ReadValue("Saisissez  la seconde valeur :");
-            double total = Additionne(valA, valB);
+            double total = Additionner(valA, valB);
             Console.WriteLine("Total : " + total);
-        }
-
-        /// <summary>
-        /// Lit une valeur dans la console et la transforme en valuer entière
-        /// </summary>
-        /// <param name="label"></param>
-        /// <returns></returns>
-        public int ReadValue(string label)
-        {
-            Console.WriteLine(label);
-            return int.Parse(Console.ReadLine());
         }
     }
 }

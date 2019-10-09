@@ -4,14 +4,11 @@ using System.Text;
 
 namespace Exercice_8_4
 {
-    class CalculatriceSoustractionInt : ICalculatrice
+    class Soustraction : BaseOperation, IOperation
     {
-        public string Operation
+        public Soustraction()
         {
-            get
-            {
-                return "-";
-            }
+            Operation = "-";
         }
 
         /// <summary>
@@ -34,17 +31,6 @@ namespace Exercice_8_4
             int valB = ReadValue("Saisissez  la seconde valeur :");
             int total = Soustraire(valA, valB);
             Console.WriteLine("Total : " + total);
-        }
-
-        /// <summary>
-        /// Lit une valeur dans la console et la transforme en valuer entière
-        /// </summary>
-        /// <param name="label"></param>
-        /// <returns></returns>
-        public int ReadValue(string label)
-        {
-            Console.WriteLine(label);
-            return int.Parse(Console.ReadLine());
         }
     }
 }

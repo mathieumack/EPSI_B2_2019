@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Exercice_5_2
 {
@@ -7,53 +9,34 @@ namespace Exercice_5_2
         static void Main(string[] args)
         {
             Random random = new Random();
-            int[] monTableau = new int[100];
+            // Initialisation d'une liste vide
+            List<int> monTableau = new List<int>();
 
             Console.WriteLine("Génération du tableau...");
 
             for (int i = 0; i < 100; i++)
             {
-                monTableau[i] = random.Next(1, 6);
+                // Ajout d'un élément dans la liste :
+                monTableau.Add(random.Next(1, 6));
+                // affichage de la valeur dans la console :
                 Console.Write(monTableau[i] + " ");
             }
             Console.WriteLine(" ");
 
             Console.WriteLine("Nettoyage du tableau...");
-            for (int i = 0; i < 100; i++)
-            {
-                for (int j = i + 1; j < 100; j++)
-                {
-                    if (monTableau[i] == monTableau[j])
-                        monTableau[j] = -1;
-                }
-            }
-
-            for (int i = 0; i < 100; i++)
-            {
-                if (monTableau[i] != -1)
-                    Console.Write(monTableau[i] + " ");
-            }
-            Console.WriteLine(" ");
+            // Suppression des doublons :
+            IEnumerable<int> tableauNettoye = monTableau.Distinct();
+            // Transformation sour la forme d'une liste de int :
+            monTableau = tableauNettoye.ToList();
 
             Console.WriteLine("Tri du tableau...");
 
-            int tmp;
+            // Tri des éléments :
+            IEnumerable<int> tableauTrie = monTableau.OrderBy(e => e);
+            // Transformation sour la forme d'une liste de int :
+            monTableau = tableauTrie.ToList();
 
-            int taille = monTableau.Length;
-            while (taille > 0)
-            {
-                for (int i = 0; i < taille - 1; i++)
-                {
-                    if (monTableau[i] > monTableau[i + 1])
-                    {
-                        tmp = monTableau[i];
-                        monTableau[i] = monTableau[i + 1];
-                        monTableau[i + 1] = tmp;
-                    }
-                }
-                taille = taille - 1;
-            }
-
+            // Affichage des éléments
             for (int i = 0; i < 100; i++)
             {
                 if (monTableau[i] != -1)

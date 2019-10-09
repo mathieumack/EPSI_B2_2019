@@ -1,33 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Exercice_8_4
 {
     public class CalculatriceGenerique
     {
-        public List<ICalculatrice> operations { get; set; }
+        public List<IOperation> operations { get; set; }
 
         public CalculatriceGenerique()
         {
-            operations = new List<ICalculatrice>();
-            operations.Add(new CalculatriceInt());
-            operations.Add(new CalculatriceSoustractionInt());
-            operations.Add(new CalculatriceDivision());
+            operations = new List<IOperation>();
+            operations.Add(new Addition());
+            operations.Add(new Soustraction());
+            operations.Add(new Division());
         }
 
         public void Start()
         {
             string operation = ReadString("Saisissez  l'opération :");
 
-            ICalculatrice operationAExecuter = null;
-            for(int i = 0; i < operations.Count; i++)
-            {
-                if (operations[i].Operation == operation)
-                    operationAExecuter = operations[i];
-            }
+            IOperation operationAExecuter =
+                operations.FirstOrDefault(elementCourant => elementCourant.Operation == operation);
 
-            operationAExecuter.Start();
+            if(operationAExecuter != null)
+                operationAExecuter.Start();
+            else
+                Console.WriteLine("Opération non trouvée");
         }
 
         /// <summary>

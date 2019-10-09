@@ -6,8 +6,7 @@ namespace Exercice_8_1
     {
         static void Main(string[] args)
         {
-            Calculatrice cal = new Calculatrice("+");
-            string op = cal.Operation;
+            Calculatrice cal = new Calculatrice();
             cal.Start();
         }
     }

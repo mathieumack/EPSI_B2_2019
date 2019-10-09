@@ -12,6 +12,7 @@ namespace Exercice_5_3
 
             List<int> monTableau = Enumerable.Repeat(0, 100)    // Initialisation d'une liste de 100 items, initialisés à 0
                                                 .Select(e => random.Next(1, 6)) // On transforme chaque élément de la liste par une valeur random
+                                                .Where(e => e > 3) // Filtrage des éléments supérieurs à 3
                                                 .Distinct() // On filtre pour supprimer les doublons
                                                 .OrderBy(e => e) // On tri par ordre croissant
                                                 .ToList();  // On transforme le résultat en une liste
