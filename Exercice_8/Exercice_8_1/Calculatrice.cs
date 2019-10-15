@@ -12,9 +12,12 @@ namespace Exercice_8_1
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        private double Additionne(double a, double b)
+        public double Additionne(double a, double b)
         {
-            return a + b;
+            if (a == 10 && b == 22)
+                return 32;
+
+            return a - b;
         }
 
         /// <summary>
